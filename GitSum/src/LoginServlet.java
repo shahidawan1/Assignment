@@ -39,11 +39,13 @@ public class LoginServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		try
 		{
-			String name, pwd;
-			name = (String) request.getParameter("username");
-			pwd = (String) request.getParameter("password");
+			String name1=null;
+			String pwd=null;
 			
-		     if (DataBaseConnection.validateUser(name, pwd))
+			name1 =  request.getParameter("un");
+			pwd =  request.getParameter("pw");
+			
+		     if (DataBaseConnection.validateUser(name1, pwd)==0)
 		     {
 			        
 		          HttpSession session = request.getSession(true);	    

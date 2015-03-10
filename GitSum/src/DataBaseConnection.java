@@ -1,45 +1,50 @@
 
-
 import java.sql.*;
-
-public class DataBaseConnection {
+public class DataBaseConnection 
+{
+	static final String JDBC_DRIVER = "com.mysql.jdbc.Driver"; 
+	static final String DB_URL = "jdbc:mysql://localhost/users";
 	
-		static final String DB_URL = "jdbc:mysql://localhost/users";
-		static final String USER = "root";
-		static final String PASS = "123";
-		static Connection conn = null;
-		public static void connection() throws Exception{
-			   try{
-			      Class.forName("com.mysql.jdbc.Driver");
-			      conn = DriverManager.getConnection(DB_URL, USER, PASS);
-			   }
-			   catch(SQLException se){
-			      se.printStackTrace();
-			   }
-		}
-		public static void main(String args[]){
-			try {
-				validateUser("jamil","123");
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+	static final String USER = "shan";
+	static final String PASS = "123";
+
+	public static void main(String[] args) throws ClassNotFoundException, SQLException {}
+	
+	public static int validateUser(String id1, String password1)throws ClassNotFoundException, SQLException
+	{
+	Connection conn = null; 
+	Statement stmt = null;
+	
+	Class.forName("com.mysql.jdbc.Driver");
+	
+	System.out.println("Connecting to database..."); 
+	conn = DriverManager.getConnection(DB_URL,USER,PASS);
+
+	System.out.println("Creating statement...");
+	stmt = conn.createStatement();
+	String sql; sql = "SELECT id, password FROM usersrecords";
+	ResultSet rs = stmt.executeQuery(sql);
+	
+		int x=1;
+		while(rs.next())
+		{
+			String id = rs.getString("id"); 
+			String password = rs.getString("password");
+			if (id1.equals(id))
+			{System.out.print("ID: " + id); 
+			if(password1.equals(password))
+			{System.out.println(",    password: " + password);x=0;}
+			else
+			{
+				System.out.println("Invalid user");}
 			}
+			
 		}
-	public static boolean validateUser(String name, String pass) throws Exception{
-		connection();
-		Statement stmt = conn.createStatement();
-	    ResultSet rs = stmt.executeQuery("SELECT * FROM usersrecords");
-	    while(rs.next()){
-	    	System.out.println("id "+rs.getString(1)+" id2: "+rs.getString(2));
-	    	return true;
-	    }
-	    return false;
-	    /*rs.last();
-	    String username = rs.getString(1);
-	    String password = rs.getString(2);
-	    if(username.equals(name)&&password.equals(pass))	
-	    	return true;
-		else
-			return false;*/
+		rs.close(); 
+		stmt.close();
+		conn.close();
+		return x;
+		
+						
 	}
 }
