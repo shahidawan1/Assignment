@@ -4,17 +4,14 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>main page</title>
+<title>Invalid user</title>
 </head>
 <body>
-<%if(session.getAttribute("currentSessionUser")==null)
-	response.sendRedirect("Login.jsp") ;%>
-<%String name=request.getParameter("username");%>
-
 <h1>
-welcome
-<%=name%>
-
+Invalid user
+<br>
+<%String name=request.getParameter("username");%>
+<%=name %>
 </h1>
 </body>
 </html>

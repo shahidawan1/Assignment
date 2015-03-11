@@ -10,6 +10,27 @@ public class DataBaseConnection
 
 	public static void main(String[] args) throws ClassNotFoundException, SQLException {}
 	
+	public static void 	registerUser(String id1, String password1)throws ClassNotFoundException, SQLException
+	{
+	Connection conn = null; 
+	Statement stmt = null;
+	
+	Class.forName("com.mysql.jdbc.Driver");
+	
+	System.out.println("Connecting to database..."); 
+	conn = DriverManager.getConnection(DB_URL,USER,PASS);
+
+	System.out.println("Creating statement...");
+	stmt = conn.createStatement();
+	String sql; sql = "INSERT INTO usersrecords (id,password) VALUES (id1, password1)";
+	ResultSet rs = stmt.executeQuery(sql);
+	
+	System.out.println("done");
+	rs.close(); 
+	stmt.close();
+	conn.close();
+	}
+
 	public static int validateUser(String id1, String password1)throws ClassNotFoundException, SQLException
 	{
 	Connection conn = null; 
@@ -36,6 +57,7 @@ public class DataBaseConnection
 			{System.out.println(",    password: " + password);x=0;}
 			else
 			{
+				
 				System.out.println("Invalid user");}
 			}
 			

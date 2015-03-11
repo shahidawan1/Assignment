@@ -7,12 +7,12 @@
 <title>Registration</title>
 </head>
 <body>
-<form action="RegisterHandler" method="POST">
+<form action="RegisterServlet" method="POST">
 <br>
 Email<br>
-<input type="text" size="25" name="user" id="username">
-<br>Name<br>
-<input type="text" size="25" name="user" id="username">
+<input type="text" size="25" name="email" id="email">
+<br>Username<br>
+<input type="text" size="25" name="username" id="username">
 <br>
 password<br>
 <input type="password" id="password" name="password">
@@ -22,7 +22,7 @@ confirm password<br>
 
 
 
-<input type="submit" value="submit">
+<input type="submit" value="sign up">
 </form>
 
 </body>

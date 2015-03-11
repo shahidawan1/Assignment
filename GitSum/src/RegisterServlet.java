@@ -1,6 +1,8 @@
 
 
 import java.io.IOException;
+import java.sql.SQLException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -33,7 +35,33 @@ public class RegisterServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-	}
+		String name=null;
+		String pswrd=null;
+		String email=null;
+		
+		name =(String)request.getParameter("username");
+		pswrd =(String)request.getParameter("password");
+		email=(String)request.getParameter("email");
+		System.out.println(name + pswrd +email);
+		
+		if(name==null||pswrd==null||email==null)
+		{
+						response.sendRedirect("Register.jsp");
+		}
+		else{
+			response.sendRedirect("Login.jsp");
+	
+			try {
+				DataBaseConnection.registerUser(name, pswrd);
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+		}
+		
 
 }

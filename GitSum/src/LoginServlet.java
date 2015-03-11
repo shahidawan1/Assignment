@@ -1,6 +1,8 @@
 
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -42,22 +44,26 @@ public class LoginServlet extends HttpServlet {
 			String name1=null;
 			String pwd=null;
 			
-			name1 =  request.getParameter("un");
-			pwd =  request.getParameter("pw");
+			name1 =  request.getParameter("username");
+			pwd =  request.getParameter("password");
+			
 			
 		     if (DataBaseConnection.validateUser(name1, pwd)==0)
 		     {
-			        
-		          HttpSession session = request.getSession(true);	    
-		          session.setAttribute("currentSessionUser",request.getParameter("userName")); 
-		          response.sendRedirect("main.jsp");      		
+		    	 HttpSession session = request.getSession(true);	    
+		          session.setAttribute("currentSessionUser",request.getParameter("username")); 
+		     //     response.sendRedirect("main.jsp");      		
+		          RequestDispatcher rd=request.getRequestDispatcher("main.jsp");  
+			         rd.forward(request, response);
+
 		     }
 			        
-		     else 
-		          response.sendRedirect("invalidUser.jsp"); 
-		} 
+		     else
+		     { 
+		    	 RequestDispatcher rd=request.getRequestDispatcher("invaliduser.jsp");  
+	         rd.forward(request, response); }
 				
-				
+		}		
 		catch (Throwable theException) 	    
 		{
 		     System.out.println(theException); 

@@ -8,11 +8,10 @@
 </head>
 <body>
 <form action="LoginServlet" method="POST">
-Please enter your username 		
-			<input type="text" name="un"/><br>		
+Username 		
+			<input type="text" name="username"/><br>		
 		
-			Please enter your password
-			<input type="text" name="pw"/>
+Password			<input type="password" name="password"/>
 
 <input type="submit" value="submit">
 </form>
