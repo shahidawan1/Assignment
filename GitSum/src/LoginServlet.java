@@ -39,8 +39,7 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		try
-		{
+		try{
 			String name1=null;
 			String pwd=null;
 			
@@ -51,21 +50,21 @@ public class LoginServlet extends HttpServlet {
 		     if (DataBaseConnection.validateUser(name1, pwd)==0)
 		     {
 		    	 HttpSession session = request.getSession(true);	    
-		          session.setAttribute("currentSessionUser",request.getParameter("username")); 
-		     //     response.sendRedirect("main.jsp");      		
-		          RequestDispatcher rd=request.getRequestDispatcher("main.jsp");  
-			         rd.forward(request, response);
+		    	 session.setAttribute("currentSessionUser",request.getParameter("username")); 
+		     //  response.sendRedirect("main.jsp");      		
+		         RequestDispatcher rd=request.getRequestDispatcher("main.jsp");  
+			     rd.forward(request, response);
 
 		     }
 			        
 		     else
 		     { 
 		    	 RequestDispatcher rd=request.getRequestDispatcher("invaliduser.jsp");  
-	         rd.forward(request, response); }
+		    	 rd.forward(request, response); 
+		     }
 				
 		}		
-		catch (Throwable theException) 	    
-		{
+		catch (Throwable theException){
 		     System.out.println(theException); 
 		}
 	}
