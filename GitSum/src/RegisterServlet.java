@@ -46,7 +46,9 @@ public class RegisterServlet extends HttpServlet {
 		
 		System.out.println(name + pswrd+cpswrd +email);
 	
-		if(name==null||pswrd==null||cpswrd==null||email==null||name==""||pswrd==""||email==""||cpswrd==""||!(pswrd.equals(cpswrd)))
+		if(name==null||pswrd==null||cpswrd==null||email==null||
+				name==""||pswrd==""||email==""||
+				cpswrd==""||!(pswrd.equals(cpswrd)))
 		{
 					response.sendRedirect("Register.jsp");
 		}
