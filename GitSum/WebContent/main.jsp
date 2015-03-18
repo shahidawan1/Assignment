@@ -42,8 +42,37 @@ table, th, td {
 <script>
 $(document).ready(function(){
     $("#javaEe").click(function(){
+      
+});
+});
+
+$(document).ready(function(){
+    $("#javaEe").click(function(){
         $.get("https://api.github.com/search/repositories?q=javaEE+language:JavaEE&sort=stars&order=desc", function(data, status){
-            alert("Data: " + data + "\nStatus: " + status);
+        	
+        	for(var i = 0; i <= data.items.length ; i++ ){
+        		
+        		
+        		  $.get("https://api.github.com/repos/"+data.items[i].owner.login+"/"+data.items[i].name+"/stats/participation", function(ownerData, status){
+        			  var commits=0;
+        			  for(var j=0; j<=ownerData.all.length ; j++)
+        				  {
+        				  	commits = commits+ownerData.all[i];
+        				  }
+        			  $("#commiturl").prepend("<div>"+commits+"</div>");
+        		    });
+            	
+       		 
+        		$("#login").prepend("<div>"+data.items[i].owner.login+"</div>");
+          		$("#id").prepend("<div>"+data.items[i].id+"</div>");
+          		$("#fullname").prepend("<div>"+data.items[i].name+"</div>");
+          		
+          		$("#branchesurl").prepend("<div>"+data.items[i].contributors_url+"</div>");
+          		$("#contributors").prepend("<div>"+data.items[i].branches_url+"</div>");
+        		
+        		
+        	}
+        	
             console.log(data);
         });
     });
@@ -51,7 +80,30 @@ $(document).ready(function(){
 $(document).ready(function(){
     $("#javaSe").click(function(){
         $.get("https://api.github.com/search/repositories?q=javaSE+language:JavaSE&sort=stars&order=desc", function(data, status){
-            alert("Data: " + data + "\nStatus: " + status);
+        	
+        	for(var i = 0; i <= data.items.length ; i++ ){
+
+      		  $.get("https://api.github.com/repos/"+data.items[i].owner.login+"/"+data.items[i].name+"/stats/participation", function(ownerData, status){
+      			  var commit=0;
+      			  for(var j=0; j<=ownerData.all.length ; j++)
+      				  {
+      				  	commit = commit+ownerData.all[i];
+      				  }
+      			  $("#commiturl").prepend("<div>"+commit+"</div>");
+      		    });
+        		
+        		
+            	
+       		 
+        		$("#login").prepend("<div>"+data.items[i].owner.login+"</div>");
+          		$("#id").prepend("<div>"+data.items[i].id+"</div>");
+          		$("#fullname").prepend("<div>"+data.items[i].name+"</div>");
+          		$("#branchesurl").prepend("<div>"+data.items[i].contributors_url+"</div>");
+          		$("#contributors").prepend("<div>"+data.items[i].branches_url+"</div>");
+        		
+        		
+        	}
+        
             console.log(data);
         });
     });
@@ -59,7 +111,29 @@ $(document).ready(function(){
 $(document).ready(function(){
     $("#javaAnd").click(function(){
         $.get("https://api.github.com/search/repositories?q=javaAndroid+language:javaAndroid&sort=stars&order=desc", function(data, status){
-            alert("Data: " + data + "\nStatus: " + status);
+        	
+        	for(var i = 0; i <= data.items.length ; i++ ){
+        		
+
+      		  $.get("https://api.github.com/repos/"+data.items[i].owner.login+"/"+data.items[i].name+"/stats/participation", function(ownerData, status){
+      			  var comm=0;
+      			  for(var j=0; j<=ownerData.all.length ; j++)
+      				  {
+      				  	comm = comm+ownerData.all[i];
+      				  }
+      			  $("#commiturl").prepend("<div>"+comm+"</div>");
+      		    });
+        		
+            	
+       		 
+        		$("#login").prepend("<div>"+data.items[i].owner.login+"</div>");
+          		$("#id").prepend("<div>"+data.items[i].id+"</div>");
+          		$("#fullname").prepend("<div>"+data.items[i].name+"</div>");
+          		$("#branchesurl").prepend("<div>"+data.items[i].contributors_url+"</div>");
+          		$("#contributors").prepend("<div>"+data.items[i].branches_url+"</div>");
+        		
+        		
+        	}
             console.log(data);
             system.out.print(data);
         });
@@ -69,7 +143,29 @@ $(document).ready(function(){
 $(document).ready(function(){
     $("#JS").click(function(){
         $.get("https://api.github.com/search/repositories?q=javaScript+language:javaScript&sort=stars&order=desc", function(data, status){
-            alert("Data: " + data + "\nStatus: " + status);
+        	
+        	for(var i = 0; i <= data.items.length ; i++ ){
+
+      		  $.get("https://api.github.com/repos/"+data.items[i].owner.login+"/"+data.items[i].name+"/stats/participation", function(ownerData, status){
+      			  var commitsjs=0;
+      			  for(var j=0; j<=ownerData.all.length ; j++)
+      				  {
+      				  	commitsjs = commitsjs+ownerData.all[i];
+      				  }
+      			  $("#commiturl").prepend("<div>"+commitsjs+"</div>");
+      		    });
+        		
+        		
+            	
+       		 
+        		$("#login").prepend("<div>"+data.items[i].owner.login+"</div>");
+          		$("#id").prepend("<div>"+data.items[i].id+"</div>");
+          		$("#fullname").prepend("<div>"+data.items[i].name+"</div>");
+          		$("#branchesurl").prepend("<div>"+data.items[i].contributors_url+"</div>");
+          		$("#contributors").prepend("<div>"+data.items[i].branches_url+"</div>");
+        		
+        		
+        	}
             console.log(data);
         });
     });
@@ -78,8 +174,31 @@ $(document).ready(function(){
 $(document).ready(function(){
     $("#JQ").click(function(){
         $.get("https://api.github.com/search/repositories?q=JQuery+language:JQuery&sort=stars&order=desc", function(data, status){
-            alert("Data: " + data + "\nStatus: " + status);
-            console.log(data);
+            
+        	
+        	for(var i = 0; i <= data.items.length ; i++ ){
+        		
+
+      		  $.get("https://api.github.com/repos/"+data.items[i].owner.login+"/"+data.items[i].name+"/stats/participation", function(ownerData, status){
+      			  var com=0;
+      			  for(var j=0; j<=ownerData.all.length ; j++)
+      				  {
+      				  	com = com+ownerData.all[i];
+      				  }
+      			  $("#commiturl").prepend("<div>"+com+"</div>");
+      		    });
+        		
+            	
+       		 
+        		$("#login").prepend("<div>"+data.items[i].owner.login+"</div>");
+          		$("#id").prepend("<div>"+data.items[i].id+"</div>");
+          		$("#fullname").prepend("<div>"+data.items[i].name+"</div>");
+          		$("#branchesurl").prepend("<div>"+data.items[i].contributors_url+"</div>");
+          		$("#contributors").prepend("<div>"+data.items[i].branches_url+"</div>");
+        		
+        		
+        	}
+        	console.log(data);
         });
     });
 });
@@ -87,7 +206,29 @@ $(document).ready(function(){
 $(document).ready(function(){
     $("#Cpp").click(function(){
         $.get("https://api.github.com/search/repositories?q=Cplusplus+language:Cplusplus&sort=stars&order=desc", function(data, status){
-            alert("Data: " + data + "\nStatus: " + status);
+            
+            for(var i = 0; i <= data.items.length ; i++ ){
+        		
+
+      		  $.get("https://api.github.com/repos/"+data.items[i].owner.login+"/"+data.items[i].name+"/stats/participation", function(ownerData, status){
+      			  var co=0;
+      			  for(var j=0; j<=ownerData.all.length ; j++)
+      				  {
+      				  	co = co+ownerData.all[i];
+      				  }
+      			  $("#commiturl").prepend("<div>"+co+"</div>");
+      		    });
+        		
+            	
+       		 
+        		$("#login").prepend("<div class = 'row'>"+data.items[i].owner.login+"</div>");
+          		$("#id").prepend("<div class = 'row'>"+data.items[i].id+"</div>");
+          		$("#fullname").prepend("<div class = 'row'>"+data.items[i].name+"</div>");
+          		$("#branchesurl").prepend("<div class = 'row'>"+data.items[i].contributors_url+"</div>");
+          		$("#contributors").prepend("<div class = 'row'>"+data.items[i].branches_url+"</div>");
+        		
+        		
+        	}
             console.log(data);
         });
     });
@@ -96,16 +237,24 @@ $(document).ready(function(){
 $(document).ready(function(){
     $("#javaAnd").click(function(){
         $.get("https://api.github.com/search/repositories?q=javaAndroid+language:javaAndroid&sort=stars&order=desc", function(data, status){
-        	for(var i = 0; i < data.items.length ; i++ ){
+        	
+        	for(var i = 0; i <= data.items.length ; i++ ){
         		
-        		
+
+      		  $.get("https://api.github.com/repos/"+data.items[i].owner.login+"/"+data.items[i].name+"/stats/participation", function(ownerData, status){
+      			  var cm=0;
+      			  for(var j=0; j<=ownerData.all.length ; j++)
+      				  {
+      				  	cm = cm+ownerData.all[i];
+      				  }
+      			  $("#commiturl").prepend("<div>"+cm+"</div>");
+      		    });	
         		
         	
         		 
         		$("#login").prepend("<div>"+data.items[i].owner.login+"</div>");
           		$("#id").prepend("<div>"+data.items[i].id+"</div>");
-          		$("#fullname").prepend("<div>"+data.items[i].full_name+"</div>");
-          		$("#commiturl").prepend("<div>"+data.items[i].commits_url+"</div>");
+          		$("#fullname").prepend("<div>"+data.items[i].name+"</div>");
           		$("#branchesurl").prepend("<div>"+data.items[i].contributors_url+"</div>");
           		$("#contributors").prepend("<div>"+data.items[i].branches_url+"</div>");
         		
@@ -120,7 +269,29 @@ $(document).ready(function(){
 $(document).ready(function(){
     $("#Chash").click(function(){
         $.get("https://api.github.com/search/repositories?q=C#+language:C#&sort=stars&order=desc", function(data, status){
-            alert("Data: " + data + "\nStatus: " + status);
+            
+            for(var i = 0; i <= data.items.length ; i++ ){
+        		
+        		
+
+      		  $.get("https://api.github.com/repos/"+data.items[i].owner.login+"/"+data.items[i].name+"/stats/participation", function(ownerData, status){
+      			  var commitsc=0;
+      			  for(var j=0; j<=ownerData.all.length ; j++)
+      				  {
+      				  	commitsc = commitsc+ownerData.all[i];
+      				  }
+      			  $("#commiturl").prepend("<div>"+commitsc+"</div>");
+      		    });
+            	
+       		 
+        		$("#login").prepend("<div>"+data.items[i].owner.login+"</div>");
+          		$("#id").prepend("<div>"+data.items[i].id+"</div>");
+          		$("#fullname").prepend("<div>"+data.items[i].name+"</div>");
+          		$("#branchesurl").prepend("<div>"+data.items[i].contributors_url+"</div>");
+          		$("#contributors").prepend("<div>"+data.items[i].branches_url+"</div>");
+        		
+        		
+        	}
             console.log(data);
         });
     });
@@ -130,8 +301,30 @@ $(document).ready(function(){
     $("#CSS").click(function(){
         $.get("https://api.github.com/search/repositories?q=CSS+language:CSS&sort=stars&order=desc", function(data, status){
             
-        	alert("Data: " + data + "\nStatus: " + status);
-            console.log(data);
+        	
+        	for(var i = 0; i <= data.items.length ; i++ ){
+        		
+        		
+
+      		  $.get("https://api.github.com/repos/"+data.items[i].owner.login+"/"+data.items[i].name+"/stats/participation", function(ownerData, status){
+      			  var commitss=0;
+      			  for(var j=0; j<=ownerData.all.length ; j++)
+      				  {
+      				  	commitss = commitss+ownerData.all[i];
+      				  }
+      			  $("#commiturl").prepend("<div>"+commitss+"</div>");
+      		    });
+            	
+       		 
+        		$("#login").prepend("<div>"+data.items[i].owner.login+"</div>");
+          		$("#id").prepend("<div>"+data.items[i].id+"</div>");
+          		$("#fullname").prepend("<div>"+data.items[i].name+"</div>");
+          		$("#branchesurl").prepend("<div>"+data.items[i].contributors_url+"</div>");
+          		$("#contributors").prepend("<div>"+data.items[i].branches_url+"</div>");
+        		
+        		
+        	}
+        	console.log(data);
         });
     });
 });
@@ -191,16 +384,18 @@ $(document).ready(function(){
     <th>login name</th>
     <th>id</th>
     <th>full name</th>
-    <th>commit url</th>
+    <th>Number of commits of last 52 weeks</th>
   <th>branches url</th>
   <th>contributors</th>
+  
   </tr>
+ <tr>
     <td><div id = "login"></div></td>
     <td><div id = "id"></div></td>
     <td><div id = "fullname"></div></td>
     <td><div id = "commiturl"></div></td>
-    <td><div id = "branchesurl"></div></td>
     <td><div id = "contributors"></div></td>
+    <td><div id = "branchesurl"></div></td>
   </tr>
 
 </table>
